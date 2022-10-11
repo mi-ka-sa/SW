@@ -24,19 +24,36 @@ class Router
         return self::$route;
     }
 
+    protected static function removeQueryString($url): string
+    {
+        if ($url) {
+            $params = explode('&', $url, 2);
+            if (false === str_contains('=', $params[0])) {
+                return rtrim($params[0], '/');
+            }
+        }
+
+        return '';
+    }
+
     public static function dispath($url)
     {
+        $url = self::removeQueryString($url);
         if (self::matchRoute($url)) {
             // way with full namespace
             $controller = 'app\controllers\\' . self::$route['admin_prefix'] . self::$route['controller'] . 'Controller'; 
             if (class_exists($controller)) {
                 // create an instance of the class
                 $controllerObj = new $controller(self::$route);
+
+                $controllerObj->getModel();
+
                 // create name for Action
                 $action = self::lowerCamelCase(self::$route['action'] . 'Action');
                 if (method_exists($controllerObj, $action)) {
                     // call the method
-                    $controllerObj->$action(); 
+                    $controllerObj->$action();
+                    $controllerObj->getView();
                 } else {
                     throw new Exception("Method {$controller}::{$action} not found", 404);
                 }

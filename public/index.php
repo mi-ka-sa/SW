@@ -11,5 +11,3 @@ require_once HELPERS . '/function.php';
 require_once CONFIG . '/routes.php';
 
 new \sw\App();
-
-debug(\sw\Router::getRoutes());

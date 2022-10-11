@@ -2,10 +2,12 @@
 
 namespace app\controllers\admin;
 
-class MainController
+use sw\Controller;
+
+class MainController extends Controller
 {
     public function indexAction()
     {
-        echo 'Admin area';
+        echo '<h1>Admin area</h1>';
     }
 }
