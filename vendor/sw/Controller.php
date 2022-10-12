@@ -28,6 +28,7 @@ abstract class Controller
 
     public function getView()
     {
+        // if not overridden in controller (MainController and etc,), then we take the standard View
         $this->view = $this->view ?: $this->route['action'];
         (new View ($this->route, $this->layout, $this->view, $this->meta))->render($this->data);
     }
