@@ -2,18 +2,18 @@
 
 namespace app\controllers;
 
-
-use sw\Controller;
 use app\models\Main;
 use RedBeanPHP\R;
 
-class MainController extends Controller
+class MainController extends AppController
 {
     public function indexAction()
     {
-        $names = $this->model->getNames();
-        $one_name =R::getRow('SELECT * FROM name WHERE id = 2 ');
-        $this->setMeta('Home page', 'Description for home page', 'Keywords for home page');
-        $this->setData(compact('names'));
+        $slides = R::findAll('slider');
+
+        $products = $this->model->getHitProduct(1, 6);
+        // debug($products, 1);
+
+        $this->setData(compact('slides', 'products'));
     }
 }

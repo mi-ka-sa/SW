@@ -7,7 +7,7 @@ abstract class Controller
     // array for data from Model and transfer to View
     public array $data = [];
 
-    public array $meta = [];
+    public array $meta = ['title' => '', 'desc' => '', 'keywords' => ''];
     public false|string $layout = '';
     public string $view = '';
     public object $model;
