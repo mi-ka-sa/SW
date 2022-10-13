@@ -1,32 +1,31 @@
 <?php 
 use sw\View;
 ?>
-
 <footer>
     <section class="footer">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-6">
-                    <h4>Информация</h4>
+                    <h4><?php __('tpl_information_of_company'); ?></h4>
                     <ul class="list-unstyled">
-                        <li><a href="#">Главная</a></li>
-                        <li><a href="#">О магазине</a></li>
-                        <li><a href="#">Оплата и доставка</a></li>
-                        <li><a href="#">Контакты</a></li>
+                        <li><a href="<?= base_url();?>"><?php __('tpl_link_on_home_page'); ?></a></li>
+                        <li><a href="#"><?php __('tpl_link_for_home_page_in_inf'); ?></a></li>
+                        <li><a href="#"><?php __('tpl_link_about_payment_in_inf'); ?></a></li>
+                        <li><a href="#"><?php __('tpl_contact_in_inf'); ?></a></li>
                     </ul>
                 </div>
 
                 <div class="col-md-3 col-6">
-                    <h4>Время работы</h4>
+                    <h4><?php __('tpl_operating_schedule'); ?></h4>
                     <ul class="list-unstyled">
-                        <li>г. Киев, ул. Пушкина, 10</li>
-                        <li>пн-вс: 9:00 - 18:00</li>
-                        <li>без перерыва</li>
+                        <li><?php __('tpl_address'); ?></li>
+                        <li><?php __('tpl_work_time1'); ?>: 9:00 - 18:00</li>
+                        <li><?php __('tpl_work_time2'); ?></li>
                     </ul>
                 </div>
 
                 <div class="col-md-3 col-6">
-                    <h4>Контакты</h4>
+                    <h4><?php __('tpl_contact_num_tel'); ?></h4>
                     <ul class="list-unstyled">
                         <li><a href="tel:5551234567">555 123-45-67</a></li>
                         <li><a href="tel:5551234567">555 123-45-68</a></li>
@@ -35,7 +34,7 @@ use sw\View;
                 </div>
 
                 <div class="col-md-3 col-6">
-                    <h4>Мы в сети</h4>
+                    <h4><?php __('tpl_social_network'); ?></h4>
                     <div class="footer-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>

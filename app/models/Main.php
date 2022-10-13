@@ -10,6 +10,6 @@ class Main extends AppModel
     {
         return R::getAll("SELECT p.*, pd.* FROM product p JOIN product_desc pd on 
         p.id = product_id WHERE p.status = 1 AND p.hit = 1 AND pd.language_id = ?
-        LIMIT $limit", [$lang]);
+        LIMIT $limit", [$lang['id']]);
     }
 }

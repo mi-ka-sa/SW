@@ -49,7 +49,7 @@ class View
     public function getMeta()
     {
         // function "h" is htmlspecialchars. see in helpers/function.php
-        $out = '<title>' . h($this->meta['title']) . '</title>' . PHP_EOL;
+        $out = '<title>' . App::$app->getProperty('site_name') . '::' . h($this->meta['title']) . '</title>' . PHP_EOL;
         $out .= '<meta name="description" content="' . h($this->meta['desc']) . '">' . PHP_EOL;
         $out .= '<meta name="keywords" content="' . h($this->meta['keywords']) . '">' . PHP_EOL;
 
@@ -69,7 +69,6 @@ class View
                 $logs->grep('UPDATE'),
                 $logs->grep('DELETE'),
             );
-
             debug($logs);
         }
     }
