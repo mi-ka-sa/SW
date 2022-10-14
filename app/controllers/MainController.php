@@ -2,10 +2,8 @@
 
 namespace app\controllers;
 
-use app\models\Main;
 use RedBeanPHP\R;
 use sw\App;
-use sw\Cache;
 
 class MainController extends AppController
 {

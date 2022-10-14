@@ -14,7 +14,7 @@
                         <?php endif; ?>
                         $<?= $one_prod['price'] ?></div>
                     <div class="product-links">
-                        <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                        <a class="add-to-cart" href="cart/add?<?= $one_prod['id'] ?>" data-id="<?= $one_prod['id'] ?>"><?= get_cart_icon($one_prod['id']); ?></a>
                         <a href="#"><i class="far fa-heart"></i></a>
                     </div>
                 </div>

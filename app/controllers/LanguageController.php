@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Cart;
 use sw\App;
 
 class LanguageController extends AppController
@@ -33,10 +34,11 @@ class LanguageController extends AppController
                         array_unshift($url_parts, $lang);
                     }
                 }
-                // debug($url_parts);
+
+                Cart::translateItemCart(App::$app->getProperty('languages')[$lang]);
+
                 $url = PATH . '/' . implode('/', $url_parts);
                 redirect($url);
-                // debug('FINISH: ' . $url); die;
             }
         }
         redirect();

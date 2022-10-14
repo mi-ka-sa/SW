@@ -69,3 +69,22 @@ function ___($key)
 {
     return \sw\Language::get($key);
 }
+
+function get_inf_of_class($obj)
+{
+    $reflect = new \ReflectionClass($obj);
+    debug($reflect->getMethods());
+    debug($reflect->getProperties());
+    die;
+}
+
+function get_cart_icon($id)
+{
+    if (!empty($_SESSION['cart']) && array_key_exists($id, $_SESSION['cart'])) {
+        $icon = '<i class="fas fa-luggage-cart"></i>';
+    } else {
+        $icon = '<i class="fas fa-shopping-cart"></i>';
+    }
+
+    return $icon;
+}
