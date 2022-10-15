@@ -9,6 +9,8 @@ return [
     'tpl_logout' => 'Log out',
     'tpl_cabinet' => 'Cabinet',
 
+    'tpl_product_btn_buy' => 'Buy',
+
     'tpl_orders' => 'Orders',
     'tpl_orders_files' => 'Files',
     'tpl_user_credentials' => 'Credentials',

@@ -9,6 +9,8 @@ return [
     'tpl_logout' => 'Завершини сеанс',
     'tpl_cabinet' => 'Кабінет',
 
+    'tpl_product_btn_buy' => 'Придбати',
+
     'tpl_orders' => 'Замовлення',
     'tpl_orders_files' => 'Файли',
     'tpl_user_credentials' => 'Облікові дані',

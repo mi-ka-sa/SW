@@ -1,6 +1,6 @@
 <?php
 
-define('DEBUG', 1); //1 - all errors; 0 - hide errors
+define('DEBUG', 0); //1 - all errors; 0 - hide errors
 define('ROOT', dirname(__DIR__));
 define('WWW', ROOT . '/public');
 define('APP', ROOT . '/app');
