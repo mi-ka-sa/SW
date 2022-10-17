@@ -64,7 +64,7 @@ class Router
                 throw new Exception("Controller {$controller} not found", 404);
             }
         } else {
-            throw new Exception('Pafe not found', 404);
+            throw new Exception('Page not found', 404);
         }
     }
 

@@ -10,9 +10,6 @@ use sw\Cache;
 
 class Menu
 {
-
-    // https://www.youtube.com/watch?v=fOMaYSmsiQU
-    // https://www.youtube.com/watch?v=Qble3-723bs
     protected $data;
     protected $tree;
     protected $menuHtml;

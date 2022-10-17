@@ -9,8 +9,6 @@ return [
     'tpl_logout' => 'Log out',
     'tpl_cabinet' => 'Cabinet',
 
-    'tpl_product_btn_buy' => 'Buy',
-
     'tpl_orders' => 'Orders',
     'tpl_orders_files' => 'Files',
     'tpl_user_credentials' => 'Credentials',
@@ -23,7 +21,7 @@ return [
     'tpl_signup_address_input' => 'Address',
 
     'tpl_home_breadcrumbs' => '<i class="fas fa-home"></i>',
-    'tpl_total_pagination' => 'product(s) from',
+    'tpl_total_pagination' => ' product(s) from ',
 
     'tpl_information_of_company' => 'Information',
     'tpl_link_on_home_page' => 'Home page',

@@ -9,8 +9,6 @@ return [
     'tpl_logout' => 'Завершини сеанс',
     'tpl_cabinet' => 'Кабінет',
 
-    'tpl_product_btn_buy' => 'Придбати',
-
     'tpl_orders' => 'Замовлення',
     'tpl_orders_files' => 'Файли',
     'tpl_user_credentials' => 'Облікові дані',
@@ -23,7 +21,7 @@ return [
     'tpl_signup_address_input' => 'Адреса',
 
     'tpl_home_breadcrumbs' => '<i class="fas fa-home"></i>',
-    'tpl_total_pagination' => 'товар(ів) from',
+    'tpl_total_pagination' => ' товари(ів) із ',
 
     'tpl_information_of_company' => 'Інформація',
     'tpl_link_on_home_page' => 'Головна сторінка',
