@@ -14,8 +14,12 @@
                         <?php endif; ?>
                         $<?= $one_prod['price'] ?></div>
                     <div class="product-links">
-                        <a class="add-to-cart" href="cart/add?<?= $one_prod['id'] ?>" data-id="<?= $one_prod['id'] ?>"><?= get_cart_icon($one_prod['id']); ?></a>
-                        <a href="#"><i class="far fa-heart"></i></a>
+                        <a class="add-to-cart" href="cart/add?id=<?= $one_prod['id'] ?>" data-id="<?= $one_prod['id'] ?>"><?= get_cart_icon($one_prod['id']); ?></a>
+                        <?php if (in_array($one_prod['id'], \sw\App::$app->getProperty('wishlist'))): ?>
+                            <a class="delete-from-wishlist" href="wishlist/delete?id=<?= $one_prod['id'] ?>" data-id="<?= $one_prod['id'] ?>"><i class="fas fa-hand-holding-heart"></i></a>
+                        <?php else: ?>
+                            <a class="add-to-wishlist" href="wishlist/add?id=<?= $one_prod['id'] ?>" data-id="<?= $one_prod['id'] ?>"><i class="far fa-heart"></i></a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

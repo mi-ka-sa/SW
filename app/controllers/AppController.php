@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\AppModel;
+use app\models\Wishlist;
 use app\widgets\language\Language;
 use sw\App;
 use sw\Controller;
@@ -29,5 +30,25 @@ class AppController extends Controller
                         WHERE cd.language_id = ?", [$lang['id']]);
 
         App::$app->setProperty("categories_{$lang['code']}", $categories);
+        App::$app->setProperty('wishlist', Wishlist::getWishlistIds());
+        
+    }
+
+    public function getActualPerpage()
+    {
+        $perpage_values = [
+            3 => 3,
+            50 => 50,
+            75 => 75,
+            100 => 100,
+        ];
+        
+        if (isset($_GET['on_page']) && array_key_exists($_GET['on_page'], $perpage_values)) {
+            $perpage = $perpage_values[$_GET['on_page']]; 
+        } else {
+            $perpage = App::$app->getProperty('pagination');
+        }
+        
+        return $perpage;
     }
 }

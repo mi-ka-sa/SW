@@ -2,7 +2,6 @@
 
 return [
     'tpl_search' => 'Пошук...',
-    'tpl_search_query' => 'Пошук за: ',
 
     'tpl_login' => 'Почати сеанс',
     'tpl_sigup' => 'Реєстрація',

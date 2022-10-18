@@ -27,16 +27,17 @@ class CategoryController extends AppController
         $ids = !$ids ? $category['id'] : $ids . $category['id'];
 
         $page = get('page');
-        $perpage = App::$app->getProperty('pagination');
+        $perpage = $this->getActualPerpage();
+        $default_perpage = App::$app->getProperty('pagination');
         $total = $this->model->getCountProducts($ids);
         $pagination = new Pagination($page, $perpage, $total);
         $start_prod_num = $pagination->getStart();
         
 
-        // get all products in the requested category and its descendants
-        $products = $this->model->getProducts($ids,  $lang, $start_prod_num, $perpage);
+        // get all products in the requested category and its children
+        $products = $this->model->getProducts($ids, $lang, $start_prod_num, $perpage);
 
         $this->setMeta($category['title'], $category['description'], $category['keywords']);
-        $this->setData(compact('products', 'category', 'breadcrumbs', 'total', 'pagination', 'perpage'));
+        $this->setData(compact('products', 'category', 'breadcrumbs', 'total', 'pagination', 'default_perpage'));
     }
 }

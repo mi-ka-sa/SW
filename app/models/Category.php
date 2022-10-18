@@ -46,6 +46,7 @@ class Category extends AppModel
         if (isset($_GET['sort']) && array_key_exists($_GET['sort'], $sort_values)) {
             $order_by = $sort_values[$_GET['sort']];
         }
+
         return R::getAll("SELECT p.*, pd.* FROM product p JOIN product_desc pd
                          on p.id = pd.product_id WHERE p.status = 1 AND p.category_id IN ($ids)
                          AND pd.language_id = ? $order_by LIMIT $start, $perpage", [$lang['id']]);

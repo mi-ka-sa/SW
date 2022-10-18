@@ -2,7 +2,6 @@
 
 return [
     'tpl_search' => 'Search...',
-    'tpl_search_query' => 'Search by: ',
 
     'tpl_login' => 'Log in',
     'tpl_sigup' => 'Register',

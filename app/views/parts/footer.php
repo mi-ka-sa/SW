@@ -72,6 +72,7 @@
 integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
 crossorigin="anonymous"></script>
 <script src="<?= PATH?>/assets/js/jquery.magnific-popup.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="<?= PATH?>/assets/js/main.js"></script>
 
 </body>

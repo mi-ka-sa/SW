@@ -23,7 +23,8 @@
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="input-sort"><?php __('category_view_sort'); ?>:</label>
                             <select class="form-select" id="input-sort">
-                                <option selected><?php __('category_view_sort_by_default'); ?></option>
+                                <option value="sort=default" <?php if (!isset($_GET['sort'])) echo 'selected'; ?>>
+                                <?php __('category_view_sort_by_default'); ?></option>
                                 
                                 <option value="sort=title_asc"<?php if (isset($_GET['sort']) && $_GET['sort'] == 'title_asc') echo 'selected'; ?>>
                                 <?php __('category_view_sort_title_asc'); ?></option>
@@ -44,11 +45,15 @@
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="input-sort"><?php __('category_view_product_per_page'); ?>:</label>
                             <select class="form-select" id="input-prod-on-page">
-                                <option selected><?= $perpage ?></option>
-                                <option value="product-on-page=25">25</option>
-                                <option value="2">50</option>
-                                <option value="3">75</option>
-                                <option value="3">100</option>
+                                <option value="on_page=default" <?php if (isset($_GET['on_page']) && $_GET['on_page'] == 'default') echo 'selected'; ?>><?= $default_perpage ?></option>
+                                <option value="on_page=3" <?php if (isset($_GET['on_page']) && $_GET['on_page'] == 3) echo 'selected'; ?>>
+                                3</option>
+                                <option value="on_page=50" <?php if (isset($_GET['on_page']) && $_GET['on_page'] == 50) echo 'selected'; ?>>
+                                50</option>
+                                <option value="on_page=75" <?php if (isset($_GET['on_page']) && $_GET['on_page'] == 75) echo 'selected'; ?>>
+                                75</option>
+                                <option value="on_page=100" <?php if (isset($_GET['on_page']) && $_GET['on_page'] == 100) echo 'selected'; ?>>
+                                100</option>
                             </select>
                         </div>
                     </div>
