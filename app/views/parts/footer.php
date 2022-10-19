@@ -4,12 +4,10 @@
             <div class="row">
                 <div class="col-md-3 col-6">
                     <h4><?php __('tpl_information_of_company'); ?></h4>
-                    <ul class="list-unstyled">
-                        <li><a href="<?= base_url();?>"><?php __('tpl_link_on_home_page'); ?></a></li>
-                        <li><a href="#"><?php __('tpl_link_for_home_page_in_inf'); ?></a></li>
-                        <li><a href="#"><?php __('tpl_link_about_payment_in_inf'); ?></a></li>
-                        <li><a href="#"><?php __('tpl_contact_in_inf'); ?></a></li>
-                    </ul>
+                    <?php new \app\widgets\page\Page([
+                        'class' => 'list-unstyled',
+                        'prepend' => '<li><a href="' . base_url() . '">' . ___('tpl_link_on_home_page') . '</a></li>'
+                    ]); ?>
                 </div>
 
                 <div class="col-md-3 col-6">

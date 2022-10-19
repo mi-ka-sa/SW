@@ -1,6 +1,7 @@
 composer.lock
 /vendor/composer 
 /vendor/gabordemooij 
+/vendor/vlucas
 /vendor/autoload.php
 /tmp
 /public/uploads

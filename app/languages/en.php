@@ -4,7 +4,7 @@ return [
     'tpl_search' => 'Search...',
 
     'tpl_login' => 'Log in',
-    'tpl_sigup' => 'Register',
+    'tpl_signup' => 'Register',
     'tpl_logout' => 'Log out',
     'tpl_cabinet' => 'Cabinet',
 
@@ -24,9 +24,6 @@ return [
 
     'tpl_information_of_company' => 'Information',
     'tpl_link_on_home_page' => 'Home page',
-    'tpl_link_for_home_page_in_inf' => 'About Store',
-    'tpl_link_about_payment_in_inf' => 'Payment and delivery',
-    'tpl_contact_in_inf' => 'Contacts',
 
     'tpl_operating_schedule' => 'Working hours',
     'tpl_address' => 'Kyiv, st. V. Velykoho, 10',
