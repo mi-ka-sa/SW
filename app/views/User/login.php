@@ -17,14 +17,14 @@
 
                 <div class="col-md-6 offset-md-3">
                     <div class="form-floating mb-3">
-                        <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com">
+                        <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com" required>
                         <label class="required" for="email"><?php __('tpl_signup_email_input'); ?></label>
                     </div>
                 </div>
 
                 <div class="col-md-6 offset-md-3">
                     <div class="form-floating mb-3">
-                        <input type="password" name="password" class="form-control" id="password" placeholder="password">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="password" required>
                         <label class="required" for="password"><?php __('tpl_signup_password_input'); ?></label>
                     </div>
                 </div>

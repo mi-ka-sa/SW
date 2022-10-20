@@ -2,6 +2,7 @@ composer.lock
 /vendor/composer 
 /vendor/gabordemooij 
 /vendor/vlucas
+/vendor/phpmailer
 /vendor/autoload.php
 /tmp
 /public/uploads

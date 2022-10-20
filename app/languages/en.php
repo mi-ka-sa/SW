@@ -6,7 +6,8 @@ return [
     'tpl_login' => 'Log in',
     'tpl_signup' => 'Register',
     'tpl_logout' => 'Log out',
-    'tpl_cabinet' => 'Cabinet',
+    'tpl_cabinet' => 'Cabinet',    
+    'tpl_greetings' => 'Hi',    
 
     'tpl_orders' => 'Orders',
     'tpl_orders_files' => 'Files',

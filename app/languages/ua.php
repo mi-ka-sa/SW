@@ -7,6 +7,7 @@ return [
     'tpl_signup' => 'Реєстрація',
     'tpl_logout' => 'Завершини сеанс',
     'tpl_cabinet' => 'Кабінет',
+    'tpl_greetings' => 'Вітаємо', 
 
     'tpl_orders' => 'Замовлення',
     'tpl_orders_files' => 'Файли',

@@ -52,6 +52,7 @@ use sw\View;
                                 <li><a class="dropdown-item" href="user/login"><?php __('tpl_login'); ?></a></li>
                                 <li><a class="dropdown-item" href="user/signup"><?php __('tpl_signup'); ?></a></li>
                             <?php else: ?>
+                                <h6 class="dropdown-header"><?= ___('tpl_greetings') . ': ' . $_SESSION['user']['name']; ?></h6>
                                 <li><a class="dropdown-item" href="user/cabinet"><?php __('tpl_cabinet'); ?></a></li>
                                 <li><a class="dropdown-item" href="user/logout"><?php __('tpl_logout'); ?></a></li>
                             <?php endif; ?>
