@@ -6,5 +6,6 @@ composer.lock
 /vendor/autoload.php
 /tmp
 /public/uploads
+/public/downloads
 /public/assets/img
 настройкиOpenSrver.jpg

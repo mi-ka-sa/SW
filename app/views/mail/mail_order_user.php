@@ -30,11 +30,11 @@
         </tr>
     <?php endforeach;?>
     <tr>
-        <td colspan="3" style="padding: 8px; border: 1px solid #ddd;"><?php __('tpl_cart_total_qty'); ?></td>
+        <td colspan="4" style="padding: 8px; border: 1px solid #ddd;"><?php __('tpl_cart_total_qty'); ?></td>
         <td style="padding: 8px; border: 1px solid #ddd;"><?=$_SESSION['cart.qty'] ?></td>
     </tr>
     <tr>
-        <td colspan="3" style="padding: 8px; border: 1px solid #ddd;"><?php __('tpl_cart_sum'); ?></td>
+        <td colspan="4" style="padding: 8px; border: 1px solid #ddd;"><?php __('tpl_cart_sum'); ?></td>
         <td style="padding: 8px; border: 1px solid #ddd;">$<?= $_SESSION['cart.sum'] ?></td>
     </tr>
     </tbody>
