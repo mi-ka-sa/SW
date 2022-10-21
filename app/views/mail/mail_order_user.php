@@ -22,7 +22,7 @@
     <tbody>
     <?php foreach($_SESSION['cart'] as $item): ?>
         <tr>
-            <td style="padding: 8px; border: 1px solid #ddd;"><img src="data:image/jpeg;base64,<?= base64_encode($img)?>" /></td>
+            <td style="padding: 8px; border: 1px solid #ddd;"><img src="<?= $item['img']; ?> " width='75px' /></td>
             <td style="padding: 8px; border: 1px solid #ddd;"><?=$item['title'] ?></td>
             <td style="padding: 8px; border: 1px solid #ddd;"><?=$item['qty'] ?></td>
             <td style="padding: 8px; border: 1px solid #ddd;"><?=$item['price'] ?></td>

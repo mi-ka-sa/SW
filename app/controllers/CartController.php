@@ -33,7 +33,7 @@ class CartController extends AppController
     }
 
     public function showAction()
-    {
+    {;
         $this->loadView('cart_modal');
     }
 

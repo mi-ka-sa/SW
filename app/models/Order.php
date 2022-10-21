@@ -69,9 +69,7 @@ class Order extends AppModel
             $mail->Password = App::$app->getProperty('smtp_password');  //SMTP password
             $mail->SMTPSecure = App::$app->getProperty('smtp_secure');  //Enable implicit TLS encryption
             $mail->Port = App::$app->getProperty('smtp_port');          //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-            $mail->isHTML(true);                                        //Set email format to HTML
-            // $mail->addAttachment(PATH . '/public/uploads/2022/10/13/high-waist-trousers.jpg', 'high-waist-trousers');
-            $img=file_get_contents(PATH . '/public/uploads/2022/10/13/high-waist-trousers.jpg');
+            // $mail->isHTML(true);                                        //Set email format to HTML
 
             //Recipients
             $mail->setFrom( App::$app->getProperty('smtp_from_email'), 
@@ -83,11 +81,11 @@ class Order extends AppModel
             require \APP . "/views/mail/{$tpl}.php";
             $body = ob_get_clean();
 
-            $mail->Body = $body;
+            $mail->msgHTML($body, ROOT);
             return $mail->send();
 
         } catch (\Exception $e) {
-            debug($e, 1);
+            // debug($e, 1);
             return false;
         }
     }
