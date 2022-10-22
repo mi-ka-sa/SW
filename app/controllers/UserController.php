@@ -60,8 +60,18 @@ class UserController extends AppController
                 $_SESSION['form_data'] = $this->model->attributes;
             } else {
                 $this->model->attributes['password'] = password_hash($this->model->attributes['password'], PASSWORD_DEFAULT);
-                if ($this->model->save('user')) {
+                $id_new_user = $this->model->save('user');
+                if ($id_new_user) {
+                    // login to the newly created account
+                    $_SESSION['user']['id'] = $id_new_user;
+                    foreach ($this->model->attributes as $key => $val) {
+                        if ($key == 'password') {
+                            continue;
+                        }
+                        $_SESSION['user'][$key] = $val;
+                    }
                     $_SESSION['success'] = ___('user_signup_success_register');
+                    redirect(base_url() . 'user/cabinet');
                 } else {
                     $_SESSION['errors'] = ___('user_signup_error_register');
                 }

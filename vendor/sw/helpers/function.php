@@ -95,3 +95,17 @@ function get_field_value($name_field)
         h($_SESSION['form_data'][$name_field]) :
         '';
 }
+
+
+function current_uri(): string
+{
+    $uri = trim(urldecode($_SERVER['QUERY_STRING']), '/');
+    if ($uri) {
+        $params = explode('&', $uri, 2);
+        if (false === str_contains('=', $params[0])) {
+            return rtrim($params[0], '/');
+        }
+    }
+
+    return '';
+}
