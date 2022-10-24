@@ -53,7 +53,7 @@ class User extends AppModel
 
         if ($email && $pass) {
             if ($is_admin) {
-                $user = R::findOne('user', "email = ? AND role = 'admin", [$email]);
+                $user = R::findOne('user', "email = ? AND role = 'admin'", [$email]);
             } else {
                 $user = R::findOne('user', "email = ?", [$email]);
             }
