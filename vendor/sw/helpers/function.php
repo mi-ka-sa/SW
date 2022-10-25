@@ -96,6 +96,13 @@ function get_field_value($name_field)
         '';
 }
 
+function get_field_array_value($name_field, $key, $index)
+{
+    return isset($_SESSION['form_data'][$name_field][$key][$index]) ? 
+        h($_SESSION['form_data'][$name_field][$key][$index]) :
+        '';
+}
+
 
 function current_uri(): string
 {

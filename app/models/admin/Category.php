@@ -2,10 +2,10 @@
 
 namespace app\models\admin;
 
-use sw\Model;
+use app\models\AppModel;
 use RedBeanPHP\R;
 
-class Category extends Model
+class Category extends AppModel
 {
     public function deleteCategory($id_cat)
     {
@@ -16,7 +16,7 @@ class Category extends Model
             }
 
             if (R::count('product', 'category_id = ?', [$id_cat])) {
-                throw new \Exception('Errors: Errors: there are products in this category');
+                throw new \Exception('Errors: there are products in this category');
             }
             
             R::exec("DELETE FROM category
@@ -33,6 +33,56 @@ class Category extends Model
         catch(\Exception $e) {
             R::rollback();
             $_SESSION['errors'] = $e->getMessage();
+        }
+    }
+
+    public function categoryValidate(): bool
+    {
+        $errors = '';
+        foreach ($_POST['category_desc'] as $lang_id => &$item) {
+            $item['title'] = trim($item['title']);
+            if (empty($item['title'])) {
+                $errors .= "The 'Category name' field must not be empty in '{$item['lang_code']}'<br>";
+            }
+            unset($item['lang_code']);
+        }
+
+        if ($errors) {
+            $_SESSION['errors'] = $errors;
+            $_SESSION['form_data'] = $_POST;
+
+            return false;
+        }
+
+        return true;
+    }
+
+    public function saveCategory(): bool
+    {
+        R::begin();
+        try {
+            $category = R::dispense('category');
+            $category->parent_id = post('parent_id');
+            $category_id = R::store($category);
+            $category->slug = AppModel::createSlug('category', 'slug', $_POST['category_desc'][2]['title'], $category_id);
+            R::store($category);
+            
+            foreach ($_POST['category_desc'] as $lang_ig => $item ) {
+                R::exec("INSERT INTO category_desc (category_id, language_id, title, description, keywords, content) VALUES (?,?,?,?,?,?)",
+                [
+                    $category_id,
+                    $lang_ig,
+                    $item['title'],
+                    $item['description'],
+                    $item['keywords'],
+                    $item['content'],
+                ]);
+            }
+            R::commit();
+            return true;
+        } catch (\Exception $e) {
+            R::rollback();
+            return false;
         }
     }
 }

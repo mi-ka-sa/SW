@@ -1,10 +1,7 @@
 <?php
 
-
 namespace app\widgets\menu;
 
-
-use RedBeanPHP\R;
 use sw\App;
 use sw\Cache;
 
