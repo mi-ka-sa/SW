@@ -37,7 +37,7 @@ class AppController extends Controller
     public function getActualPerpage(): int
     {
         $perpage_values = [
-            3 => 3,
+            4 => 4,
             50 => 50,
             75 => 75,
             100 => 100,

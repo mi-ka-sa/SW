@@ -3,7 +3,7 @@
 return [
     'admin_email' => 'admin@abc.local',
     'site_name' => 'E-Shop',
-    'pagination' => 5,
+    'pagination' => 3,
 
     'smtp_host' => 'smtp.mailtrap.io',
     'smtp_auth' => true,

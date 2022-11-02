@@ -47,11 +47,11 @@
 
                     <div class="col-sm-6">
                         <div class="input-group mb-3">
-                            <label class="input-group-text" for="input-sort"><?php __('category_view_product_per_page'); ?>:</label>
+                            <label class="input-group-text" for="input-prod-on-page"><?php __('category_view_product_per_page'); ?>:</label>
                             <select class="form-select" id="input-prod-on-page">
                                 <option value="on_page=default" <?php if (isset($_GET['on_page']) && $_GET['on_page'] == 'default') echo 'selected'; ?>><?= $default_perpage ?></option>
-                                <option value="on_page=3" <?php if (isset($_GET['on_page']) && $_GET['on_page'] == 3) echo 'selected'; ?>>
-                                3</option>
+                                <option value="on_page=4" <?php if (isset($_GET['on_page']) && $_GET['on_page'] == 4) echo 'selected'; ?>>
+                                4</option>
                                 <option value="on_page=50" <?php if (isset($_GET['on_page']) && $_GET['on_page'] == 50) echo 'selected'; ?>>
                                 50</option>
                                 <option value="on_page=75" <?php if (isset($_GET['on_page']) && $_GET['on_page'] == 75) echo 'selected'; ?>>
