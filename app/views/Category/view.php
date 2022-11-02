@@ -12,10 +12,14 @@
         <div class="col-lg-12 category-content">
             <h3 class="section-title"><?= $category['title']; ?></h3>
 
+            
             <?php if (!empty($category['content'])): ?>
-                <p><?= $category['content']; ?></p>
+                <div class="catedory-desc">
+                    <p><?= $category['content']; ?></p>
+                </div>
                 <hr>
             <?php endif; ?>
+            
 
             <?php if ($pagination->countPages > 1 || count($products) > 1): ?>
                 <div class="row">

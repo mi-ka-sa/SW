@@ -67,11 +67,11 @@ class Category extends AppModel
             $category->slug = AppModel::createSlug('category', 'slug', $_POST['category_desc'][2]['title'], $category_id);
             R::store($category);
             
-            foreach ($_POST['category_desc'] as $lang_ig => $item ) {
+            foreach ($_POST['category_desc'] as $lang_id => $item ) {
                 R::exec("INSERT INTO category_desc (category_id, language_id, title, description, keywords, content) VALUES (?,?,?,?,?,?)",
                 [
                     $category_id,
-                    $lang_ig,
+                    $lang_id,
                     $item['title'],
                     $item['description'],
                     $item['keywords'],
@@ -84,5 +84,46 @@ class Category extends AppModel
             R::rollback();
             return false;
         }
+    }
+
+    public function updateCategory($id): bool
+    {
+        R::begin();
+        try {
+            $category = R::load('category', $id);
+            if (!$category) {
+                return false;
+            }
+            $category->parent_id = post('parent_id');
+            R::store($category);
+            
+            foreach ($_POST['category_desc'] as $lang_id => $item ) {
+                R::exec("UPDATE category_desc SET title = ?, description = ?, keywords = ?, content = ? 
+                WHERE category_id = ?
+                AND language_id = ?",
+                [
+                    $item['title'],
+                    $item['description'],
+                    $item['keywords'],
+                    $item['content'],
+                    $id, 
+                    $lang_id,
+                ]);
+            }
+            R::commit();
+            return true;
+        } catch (\Exception $e) {
+            R::rollback();
+            return false;
+        }
+    }
+
+    public function getCategotyInfo($id): array
+    {
+        return R::getAssoc("SELECT cd.language_id, cd.*, c.* FROM category_desc cd
+                            JOIN category c
+                            ON c.id = cd.category_id
+                            WHERE cd.category_id = ?",
+                            [$id]);
     }
 }

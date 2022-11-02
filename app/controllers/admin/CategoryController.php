@@ -2,6 +2,9 @@
 
 namespace app\controllers\admin;
 
+use Exception;
+use sw\App;
+
 class CategoryController extends AppController
 {
     public function indexAction()
@@ -34,5 +37,34 @@ class CategoryController extends AppController
         $title = 'New category';
         $this->setMeta('Admin::' . $title);
         $this->setData(compact('title'));
+    }
+
+    public function editAction()
+    {
+        $id = get('id');
+        if (!empty($_POST)) {
+            if (!$this->model->categoryValidate()) {
+                redirect();
+            }
+
+            if ($this->model->updateCategory($id)) {
+                $_SESSION['success'] = 'Category has been updated';
+            } else {
+                $_SESSION['errors'] = 'Category update error';
+            }
+            redirect();
+        }
+
+        $category = $this->model->getCategotyInfo($id);
+
+        if (!$category) {
+            throw new Exception('Not found category', 404);
+        }
+
+        $lang = App::$app->getProperty('language')['id'];
+        App::$app->setProperty('parent_id', $category[$lang]['parent_id']);
+        $title = 'Edit category';
+        $this->setMeta('Admin::' . $title);
+        $this->setData(compact('title', 'category'));
     }
 }
