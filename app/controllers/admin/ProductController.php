@@ -23,4 +23,30 @@ class ProductController extends AppController
         $this->setMeta('Admin::' . $title);
         $this->setData(compact('title', 'products', 'pagination', 'total_product'));
     }
+
+    public function addAction()
+    {
+        if (!empty($_POST)) {
+            if ($this->model->productValidate()) {
+                if ($this->model->saveProduct()) {
+                    $_SESSION['success'] = 'New product has been added';
+                } else {
+                    $_SESSION['errors'] = 'Error when adding product';
+                }
+            }
+            redirect();
+        }
+
+        $title = 'New Product';
+        $this->setMeta('Admin::' . $title);
+        $this->setData(compact('title'));
+    }
+
+    public function getDownloadAction()
+    {
+        $query = get('query', 's');
+        $data = $this->model->getDownloads($query);
+        echo json_encode($data);
+        die;
+    }
 }
