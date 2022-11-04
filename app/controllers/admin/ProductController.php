@@ -42,6 +42,36 @@ class ProductController extends AppController
         $this->setData(compact('title'));
     }
 
+    public function editAction()
+    {
+        $id_product = get('id');
+
+        if (!empty($_POST)) {
+            if ($this->model->productValidate()) {
+                if ($this->model->updateProduct($id_product)) {
+                    $_SESSION['success'] = 'Changes saved';
+                } else {
+                    $_SESSION['errors'] = 'Error saving changes';
+                }
+            }
+
+            redirect();
+        }
+
+        $product = $this->model->getOneProduct($id_product);
+        if (!$product) {
+            throw new \Exception('Not found product', 404);
+        }
+
+        $gallery = $this->model->getGallery($id_product);
+
+        $lang = App::$app->getProperty('language')['id'];
+        App::$app->setProperty('parent_id', $product[$lang]['category_id']);
+        $title = 'Edit product';
+        $this->setMeta('Admin::' . $title);
+        $this->setData(compact('title', 'product', 'gallery'));
+    }
+
     public function getDownloadAction()
     {
         $query = get('query', 's');

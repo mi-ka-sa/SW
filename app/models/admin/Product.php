@@ -4,6 +4,7 @@ namespace app\models\admin;
 
 use app\models\AppModel;
 use RedBeanPHP\R;
+use sw\App;
 
 class Product extends AppModel
 {
@@ -118,6 +119,115 @@ class Product extends AppModel
         } catch (\Exception $e) {
             R::rollback();
             $_SESSION['form_data'] = $_POST;
+            return false;
+        }
+    }
+
+    public function getOneProduct($id): false|array
+    {
+        $product = R::getAssoc("SELECT pd.language_id, pd.*, p.* FROM product_desc pd 
+                                JOIN product p
+                                ON p.id = pd.product_id
+                                WHERE pd.product_id = ? ",
+                                [$id]);
+        if (!$product) {
+            return false;
+        }
+
+        $key = key($product);
+        if ($product[$key]['is_download']) {
+            $download_inf = $this->getProductDownload($id);
+            $product[$key]['download_id'] = $download_inf['download_id'];
+            $product[$key]['download_name'] = $download_inf['name'];
+        }
+
+        return $product;
+    }
+
+    public function getProductDownload($product_id): array
+    {
+        $lang_id = App::$app->getProperty('language')['id'];
+        return R::getRow("SELECT pd.download_id, dd.name FROM product_download pd
+                        JOIN download_desc dd
+                        ON pd.download_id = dd.download_id
+                        WHERE pd.product_id = ?
+                        AND dd.language_id = ?", 
+                        [$product_id, $lang_id]);
+    }
+
+    public function getGallery($product_id): array
+    {
+        return R::getCol("SELECT img FROM product_gallery
+                        WHERE product_id = ?",
+                        [$product_id]);
+    }
+
+    public function updateProduct($id): bool
+    {
+
+        R::begin();
+        try {
+            // update info in PRODUCT
+            $product = R::load('product', $id);
+            if (!$product) {
+                return false;
+            }
+
+            $product->category_id = post('parent_id');
+            $product->price = post('price', 'f');
+            $product->old_price = post('old_price', 'f');
+            $product->status = post('status', 's') ? 1 : 0;
+            $product->hit =post('hit', 's') ? 1 : 0;
+            $product->img = post('img', 's') ?: NO_IMAGE;
+            $product->is_download = post('is_download') ? 1 : 0;
+            $product_id = R::store($product);
+            
+            // update info in PRODUCT_DESC
+            foreach ($_POST['product_desc'] as $lang_id => $item ) {
+                R::exec("UPDATE product_desc SET title = ?, content = ?, short_desc = ?, keyword = ?, description = ? 
+                WHERE product_id = ?
+                AND language_id = ?",
+                [
+                    $item['title'],
+                    $item['content'],
+                    $item['short_desc'],
+                    $item['keyword'],
+                    $item['description'],
+                    $id,
+                    $lang_id,
+                ]);
+            }
+
+            // update info in PRODUCT_GALLERY if exists
+            if (!isset($_POST['gallery'])) {
+                R::exec("DELETE FROM product_gallery WHERE product_id = ?", [$id]);
+            }
+
+            if (isset($_POST['gallery']) && is_array($_POST['gallery'])) {
+                $gallery = $this->getGallery($id);
+                
+                if (count($gallery) != count($_POST['gallery']) || array_diff($gallery, $_POST['gallery']) || array_diff($_POST['gallery'],$gallery)) {
+                    R::exec("DELETE FROM product_gallery WHERE product_id = ?", [$id]);
+                    $sql = "INSERT INTO product_gallery (product_id, img) VALUES ";
+                    foreach ($_POST['gallery'] as $item) {
+                        $sql .= "({$product_id}, ?),";
+                    }
+                    $sql = rtrim($sql, ',');
+                    R::exec($sql, $_POST['gallery']);
+                }
+            }
+
+            // update info in PRODUCT_DOWNLOAD if is download
+            R::exec("DELETE FROM product_download WHERE product_id = ?", [$id]);
+            if ($product->is_download) {
+                $download_id = post('is_download');
+                R::exec("INSERT INTO product_download (product_id, download_id) VALUES (?,?)", [$product_id, $download_id]);
+            }
+
+            R::commit();
+            return true;
+        } catch (\Exception $e) {
+            R::rollback();
             return false;
         }
     }
