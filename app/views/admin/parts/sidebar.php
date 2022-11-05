@@ -55,6 +55,42 @@
                         <p>Product</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="<?= ADMIN ?>/download" class="nav-link">
+                        <i class="nav-icon fas fa-file-upload"></i>
+                        <p>Files</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ADMIN ?>/order" class="nav-link">
+                        <i class="nav-icon fas fa-shopping-bag"></i>
+                        <p>Orders</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ADMIN ?>/user" class="nav-link">
+                        <i class="nav-icon fas fa-user-friends"></i>
+                        <p>Users</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ADMIN ?>/cache" class="nav-link">
+                        <i class="nav-icon fas fa-database"></i>
+                        <p>Kash-management</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ADMIN ?>/page" class="nav-link">
+                        <i class="nav-icon far fa-file-alt"></i>
+                        <p>Pages</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ADMIN ?>/slider" class="nav-link">
+                        <i class="nav-icon far fa-image"></i>
+                        <p>Slider</p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
