@@ -44,4 +44,6 @@ $(function() {
         const parentDiv = $(this).closest('.product-img-upload').remove();
         return false;
     });
+
+    bsCustomFileInput.init();
 });
