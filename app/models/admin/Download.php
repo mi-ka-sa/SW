@@ -83,10 +83,38 @@ class Download extends AppModel
 
             R::commit();
             return true;
-        } catch (\Throwable $th) {
+        } catch (\Exception $e) {
             R::rollback();
             return false;
         }
+    }
+
+    public function downloadDelete($id): bool
+    {
+        $file_name = R::getCell("SELECT filename FROM download WHERE id = ?", [$id]);
+        $file_path = WWW . '/downloads/' . $file_name;
+        if (file_exists($file_path)) {
+            R::begin();
+            try {
+                R::exec("DELETE FROM download_desc WHERE download_id = ?", [$id]);
+                R::exec("DELETE FROM download WHERE id = ?", [$id]);
+
+                if (!unlink($file_path)) {
+                    $_SESSION['errors'] = 'Error while deleting file';
+                    throw new \Exception();
+                }
+
+                R::commit();
+                return true;
+            } catch (\Exception $e) {
+                R::rollback();
+                debug($e, 1);
+                return false;
+            }
+        }
+
+        $_SESSION['errors'] = 'No such file or directory exists';
+        return false;
     }
 }
 

@@ -45,4 +45,25 @@ class DownloadController extends AppController
         $this->setMeta('Admin::' . $title);
         $this->setData(compact('title'));
     }
+
+    public function deleteAction()
+    {
+        $id = get('id');
+
+        if (R::count('order_download', 'download_id = ?', [$id])) {
+            $_SESSION['errors'] = 'The file cannot be deleted because it has already been purchased';
+            redirect();
+        }
+
+        if (R::count('product_download', 'download_id = ?', [$id])) {
+            $_SESSION['errors'] = 'Unable to delete - this file is attached to the product';
+            redirect();
+        }
+
+        if ($this->model->downloadDelete($id)) {
+            $_SESSION['success'] = 'The file was deleted successfully';
+        }
+
+        redirect();
+    }
 }
