@@ -12,8 +12,13 @@ class User extends ModelsUser
         return (isset($_SESSION['user']) && $_SESSION['user']['role'] == 'admin');
     }
 
-    public function getAllUsers($start, $perpage)
+    public function getAllUsers($start, $perpage): array
     {
-        return R::findAll('user', "LIMIT $start, $perpage");
+        return R::findAll("user", "LIMIT $start, $perpage");
+    }
+
+    public function getUser($id): array
+    {
+        return R::getRow("SELECT * FROM user WHERE id = ?", [$id]);
     }
 }

@@ -5,6 +5,7 @@ namespace app\controllers\admin;
 use RedBeanPHP\R;
 use sw\Pagination;
 
+/** @property User $model */
 class UserController extends AppController
 {
     public function indexAction()
@@ -20,6 +21,27 @@ class UserController extends AppController
         $title = 'All users';
         $this->setMeta('Admin::' . $title);
         $this->setData(compact('title', 'users', 'pagination', 'total_user'));
+    }
+
+    public function viewAction()
+    {
+        $id_user = get('id');
+        $user = $this->model->getUser($id_user);
+        if (!$user) {
+            throw new \Exception('Not found user', 404);
+        }
+
+        $page = get('page');
+        $perpage = 30;
+        $total_orders = $this->model->getCountOrder($id_user);
+        $pagination = new Pagination($page, $perpage, $total_orders);
+        $start = $pagination->getStart();
+
+        $orders = $this->model->getUserOrders($start, $perpage, $id_user);
+        
+        $title = 'Profile of user';
+        $this->setMeta('Admin::' . $title);
+        $this->setData(compact('title', 'user', 'orders', 'pagination', 'total_orders'));
     }
     
     public function loginAdminAction()
