@@ -2,8 +2,26 @@
 
 namespace app\controllers\admin;
 
+use RedBeanPHP\R;
+use sw\Pagination;
+
 class UserController extends AppController
 {
+    public function indexAction()
+    {
+        $page = get('page');
+        $perpage = 30;
+        $total_user = R::count('user');
+        $pagination = new Pagination($page, $perpage, $total_user);
+        $start = $pagination->getStart();
+
+        $users = $this->model->getAllUsers($start, $perpage);
+
+        $title = 'All users';
+        $this->setMeta('Admin::' . $title);
+        $this->setData(compact('title', 'users', 'pagination', 'total_user'));
+    }
+    
     public function loginAdminAction()
     {
         if ($this->model::isAdmin()) {
