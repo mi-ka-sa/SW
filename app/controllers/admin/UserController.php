@@ -43,6 +43,40 @@ class UserController extends AppController
         $this->setMeta('Admin::' . $title);
         $this->setData(compact('title', 'user', 'orders', 'pagination', 'total_orders'));
     }
+
+    public function editAction()
+    {
+        $id_user = get('id');
+        $user = $this->model->getUser($id_user);
+        if (!$user) {
+            throw new \Exception('Not found user', 404);
+        }
+
+        if (!empty($_POST)) {
+            $this->model->load();
+            if (empty($this->model->attributes['password'])) {
+                unset($this->model->attributes['password']);
+            }
+
+            if (!$this->model->validate($this->model->attributes) || !$this->model->checkEmail($user)) {
+                $this->model->getErrors();
+            } else {
+                if (!empty($this->model->attributes['password'])) {
+                    $this->model->attributes['password'] = password_hash($this->model->attributes['password'], PASSWORD_DEFAULT);
+                }
+                if ($this->model->update('user', $id_user)) {
+                    $_SESSION['success'] = 'Data of user updated successfully';
+                } else {
+                    $_SESSION['errors'] = 'Error updating user data';
+                }
+            }
+            redirect();
+        }
+
+        $title = 'Edit of user';
+        $this->setMeta('Admin::' . $title);
+        $this->setData(compact('title', 'user'));
+    }
     
     public function loginAdminAction()
     {
