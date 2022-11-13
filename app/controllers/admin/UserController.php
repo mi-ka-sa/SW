@@ -77,6 +77,29 @@ class UserController extends AppController
         $this->setMeta('Admin::' . $title);
         $this->setData(compact('title', 'user'));
     }
+
+    public function addAction()
+    {
+        if (!empty($_POST)) {
+            $this->model->load();
+            if (!$this->model->validate($this->model->attributes) || !$this->model->checkUnique('This mail is already taken')) {
+                $this->model->getErrors();
+                $_SESSION['form_data'] = $_POST;
+            } else {
+                $this->model->attributes['password'] = password_hash($this->model->attributes['password'], PASSWORD_DEFAULT);
+                if ($this->model->save('user')) {
+                    $_SESSION['success'] = 'User added';
+                } else {
+                    $_SESSION['errors'] = 'Error adding user';
+                }
+            }
+            redirect();
+        }
+
+        $title = 'New user';
+        $this->setMeta('Admin::' . $title);
+        $this->setData(compact('title'));
+    }
     
     public function loginAdminAction()
     {
