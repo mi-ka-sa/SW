@@ -31,11 +31,14 @@ class Cache
         return false;
     }
 
-    public function delete($key)
+    public function delete($key): bool
     {
         $file = CACHE . '/' . md5($key) . '.txt';
         if (file_exists($file)) {
             unlink($file);
+            return true;
         }
+
+        return false;
     }
 }
