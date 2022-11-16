@@ -25,6 +25,25 @@ class PageController extends AppController
         $this->setData(compact('title', 'pages', 'pagination', 'total_page'));
     }
 
+    public function addAction()
+    {
+        if (!empty($_POST)) {
+            if ($this->model->pageValidate()) {
+                if ($this->model->savePage()) {
+                    $_SESSION['success'] = 'New page created';
+                } else {
+                    $_SESSION['errors'] ='Error while creating page';
+                }
+            }
+
+            redirect();
+        }
+
+        $title = 'New page';
+        $this->setMeta('Admin::' . $title);
+        $this->setData(compact('title'));
+    }
+
     public function deleteAction()
     {
         $all_lang = App::$app->getProperty('languages');
@@ -35,6 +54,8 @@ class PageController extends AppController
             redirect();
         }
 
+        // It's not obligatory. You can display a message that the deletion was successful 
+        // and ask the administrator to manually delete cahe of page
         $cache = Cache::getInstance();
         foreach ($all_lang as $code => $item) {
             if (!$cache->delete("shop_page_menu_{$code}")) {
