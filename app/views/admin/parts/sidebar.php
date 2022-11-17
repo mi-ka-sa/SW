@@ -76,7 +76,7 @@
                 <li class="nav-item">
                     <a href="<?= ADMIN ?>/cache" class="nav-link">
                         <i class="nav-icon fas fa-database"></i>
-                        <p>Kash-management</p>
+                        <p>Сache-management</p>
                     </a>
                 </li>
                 <li class="nav-item">

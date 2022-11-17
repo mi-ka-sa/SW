@@ -19,7 +19,7 @@ class CacheController extends AppController
         $langs = App::$app->getProperty('languages');
         $cache_key = get('cache', 's');
         $cache = Cache::getInstance();
-        $errors = 'Сache deletion error: ';
+        $errors = 'Сache was deleted, but not found cache-file ';
         switch ($cache_key) {
             case 'category':
                 foreach ($langs as $code => $item) {

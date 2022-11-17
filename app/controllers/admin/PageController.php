@@ -44,6 +44,32 @@ class PageController extends AppController
         $this->setData(compact('title'));
     }
 
+    public function editAction()
+    {
+        $id_page = get('id');
+
+        if (!empty($_POST)) {
+            if ($this->model->pageValidate()) {
+                if ($this->model->updatePage($id_page)) {
+                    $_SESSION['success'] = 'Changes saved';
+                } else {
+                    $_SESSION['errors'] = 'Error saving changes';
+                }
+            }
+
+            redirect();
+        }
+
+        $page = $this->model->getOnePage($id_page);
+        if (!$page) {
+            throw new \Exception('Not found this page', 404);
+        }
+
+        $title = 'Edit page';
+        $this->setMeta('Admin::' . $title);
+        $this->setData(compact('title', 'page'));
+    }
+
     public function deleteAction()
     {
         $all_lang = App::$app->getProperty('languages');
