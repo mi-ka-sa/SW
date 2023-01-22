@@ -5,6 +5,7 @@ namespace app\controllers;
 use sw\App;
 use sw\Pagination;
 
+/** @property Search $model */
 class SearchController extends AppController
 {
     public function indexAction()

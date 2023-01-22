@@ -7,7 +7,7 @@ body {
     font-size: 14px;
     line-height: 27px;
     font-weight: 400;
-    color: #000;
+    color: #444444;
     background-color: #fff;
     min-width: 320px;
     padding-top: 135px;
@@ -42,7 +42,7 @@ img {
 
 a {
     text-decoration: none;
-    color: #ee6e73;
+    color: #292929;
     transition: all .5s;
 }
 
@@ -51,7 +51,7 @@ h1 {
 }
 
 ::selection {
-    background: #ee6e73;
+    background: #292929;
     color: #fff;
 }
 
@@ -62,7 +62,7 @@ section {
 .section-title {
     overflow: hidden;
     text-transform: uppercase;
-    color: #000;
+    color: #444444;
     margin-bottom: 30px;
     text-align: center;
 }
@@ -83,7 +83,7 @@ section {
     box-sizing: border-box;
     width: 90%;
     height: 1px;
-    background: #000;
+    background: #444444;
     border: solid #fff;
     border-width: 0 10px;
 }
@@ -123,27 +123,27 @@ section {
 a:hover,
 a:focus {
     text-decoration: none;
-    color: #000;
+    color: #444444;
 }
 
 li a.dropdown-item {
-    color: #000;
+    color: #444444;
 }
 
 li a.dropdown-item:focus,
 li a.dropdown-item:hover {
-    background-color: #ee6e73;
+    background-color: #292929;
     color: #fff;
 }
 
 .btn-danger {
-    background-color: #ee6e73;
+    background-color: #BB2D3B;
 }
 
 .form-control:focus {
     color: #212529;
     background-color: #fff;
-    border-color: #ee6e73;
+    border-color: #292929;
     outline: 0;
     box-shadow: 0 0 0 .1rem rgba(238, 110, 115, .25);
 }
@@ -152,7 +152,7 @@ li a.dropdown-item:hover {
 /* Header top */
 
 .header-top {
-    background-color: #ee6e73;
+    background-color: #292929;
     position: relative;
 }
 
@@ -161,7 +161,7 @@ li a.dropdown-item:hover {
 }
 
 .header-top a:hover {
-    color: #000;
+    color: #A2A2A2;
 }
 
 .header-top #search {
@@ -173,7 +173,7 @@ li a.dropdown-item:hover {
     transition: all .2s;
     transform: scale(0);
     display: flex;
-    background-color: #ee6e73;
+    background-color: #292929;
     z-index: 1;
 }
 
@@ -205,7 +205,7 @@ li a.dropdown-item:hover {
 }
 
 .modal-header {
-    background-color: #ee6e73;
+    background-color: #292929;
     color: #fff;
 }
 
@@ -214,7 +214,7 @@ li a.dropdown-item:hover {
 }
 
 .modal-body a {
-    color: #ee6e73;
+    color: #292929;
 }
 
 
@@ -229,14 +229,15 @@ li a.dropdown-item:hover {
 }
 
 .header-bottom .navbar-nav li a.nav-link {
-    color: #000;
+    color: #444444;
     font-size: 13px;
     font-weight: 500;
     text-transform: uppercase;
 }
 
 .header-bottom .navbar-nav li a.nav-link:hover {
-    color: #ee6e73;
+    color: #292929;
+    background-color: #E9ECEF;
 }
 
 .navbar-toggler:focus {
@@ -244,12 +245,12 @@ li a.dropdown-item:hover {
 }
 
 .navbar-light .navbar-brand {
-    color: #000;
+    color: #444444;
     font-weight: 700;
 }
 
 .navbar-light .navbar-brand:hover {
-    color: #ee6e73;
+    color: #292929;
 }
 
 
@@ -329,7 +330,7 @@ li a.dropdown-item:hover {
 
 .product-price {
     font-size: 18px;
-    color: #ee6e73;
+    color: #292929;
     font-weight: 600;
 }
 
@@ -364,7 +365,7 @@ li a.dropdown-item:hover {
 
 .service-item i {
     font-size: 70px;
-    color: #ec4835;
+    color: #2C1616;
 }
 
 .service-item p {
@@ -373,15 +374,15 @@ li a.dropdown-item:hover {
 }
 
 .service-item::before {
-    border-bottom: 1px solid #ec4835;
-    border-left: 1px solid #ec4835;
+    border-bottom: 1px solid #2C1616;
+    border-left: 1px solid #2C1616;
     -webkit-transform-origin: 0 100%;
     transform-origin: 0 100%;
 }
 
 .service-item::after {
-    border-top: 1px solid #ec4835;
-    border-right: 1px solid #ec4835;
+    border-top: 1px solid #2C1616;
+    border-right: 1px solid #2C1616;
     transform-origin: 100% 0;
 }
 
@@ -449,7 +450,7 @@ li a.dropdown-item:hover {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #ee6e73;
+    background-color: #292929;
     color: #fff;
     width: 70px;
     height: 70px;
@@ -478,22 +479,22 @@ li a.dropdown-item:hover {
 }
 
 .sidebar .list-group-item.active {
-    background-color: #ee6e73;
-    border-color: #ee6e73;
+    background-color: #292929;
+    border-color: #292929;
 }
 
 .page-link {
-    color: #ee6e73;
+    color: #292929;
 }
 
 .page-item.active .page-link {
-    background-color: #ee6e73;
-    border-color: #ee6e73;
+    background-color: #292929;
+    border-color: #292929;
 }
 
 .page-link:hover {
-    background-color: #ee6e73;
-    border-color: #ee6e73;
+    background-color: #292929;
+    border-color: #292929;
     color: #fff;
 }
 
@@ -527,7 +528,7 @@ li a.dropdown-item:hover {
 a.thumbnail.active,
 a.thumbnail:focus,
 a.thumbnail:hover {
-    border-color: #ee6e73;
+    border-color: #292929;
 }
 
 .thumbnails .thumb-main a {
@@ -606,7 +607,7 @@ a.thumbnail:hover {
     }
     .product-price {
         font-size: 15px;
-        color: #ee6e73;
+        color: #292929;
         font-weight: 400;
     }
 }

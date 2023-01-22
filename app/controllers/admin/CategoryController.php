@@ -5,6 +5,7 @@ namespace app\controllers\admin;
 use Exception;
 use sw\App;
 
+/** @property Category $model */
 class CategoryController extends AppController
 {
     public function indexAction()

@@ -6,6 +6,7 @@ use app\models\User;
 use sw\App;
 use sw\Pagination;
 
+/** @property User $model */
 class UserController extends AppController
 {
     public function credentialsAction()

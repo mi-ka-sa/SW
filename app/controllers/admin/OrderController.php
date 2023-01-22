@@ -5,6 +5,7 @@ namespace app\controllers\admin;
 use RedBeanPHP\R;
 use sw\Pagination;
 
+/** @property Order $model */
 class OrderController extends AppController
 {
     public function indexAction()

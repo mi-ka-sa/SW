@@ -7,6 +7,7 @@ use app\models\User;
 use app\models\Order;
 use sw\App;
 
+/** @property Cart $model */
 class CartController extends AppController
 {
     public function addAction()

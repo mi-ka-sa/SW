@@ -24,7 +24,7 @@
                             </td>
                             <td><?= $order['created_at'] ?></td>
                             <td><?= $order['updated_at'] ?></td>
-                            <td>$<?= $order['total'] ?></td>
+                            <td>£<?= $order['total'] ?></td>
                             <td width="50">
                                 <a class="btn btn-info btn-sm" href="<?= ADMIN ?>/order/edit?id=<?= $order['id'] ?>">
                                     <i class="fas fa-pencil-alt"></i>

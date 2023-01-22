@@ -84,7 +84,7 @@
                         </div>
                         <div class="card-body">
                             <button class="btn btn-success" id="add-base-img" onclick="popupBaseImage(); return false;">
-                                Загрузить
+                                Load
                             </button>
                             <div id="base-img-output" class="upload-images base-image">
                                 <div class="product-img-upload">
@@ -111,7 +111,7 @@
                         </div>
                         <div class="card-body">
                             <button class="btn btn-success" id="add-gallery-img"
-                                    onclick="popupGalleryImage(); return false;">Загрузить
+                                    onclick="popupGalleryImage(); return false;">Load
                             </button>
                             <div id="gallery-img-output" class="upload-images gallery-image">
                                 <?php if (!empty($gallery)): ?>

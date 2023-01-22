@@ -5,6 +5,7 @@ namespace app\controllers;
 use RedBeanPHP\R;
 use sw\App;
 
+/** @property Main $model */
 class MainController extends AppController
 {
     public function indexAction()

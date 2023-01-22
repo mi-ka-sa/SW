@@ -20,7 +20,7 @@
                     <?php if ($product['old_price']): ?>
                         <small><?= $product['old_price']; ?></small>
                     <?php endif; ?>
-                    $<?= $product['price']; ?></li>
+                    £<?= $product['price']; ?></li>
             </ul>
 
             <div id="product">

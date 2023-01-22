@@ -6,6 +6,7 @@ use app\models\Breadcrumbs;
 use sw\App;
 use sw\Pagination;
 
+/** @property Category $model */
 class CategoryController extends AppController
 {
     public function viewAction()

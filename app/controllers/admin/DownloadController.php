@@ -6,6 +6,7 @@ use sw\App;
 use RedBeanPHP\R;
 use sw\Pagination;
 
+/** @property Download $model */
 class DownloadController extends AppController
 {
     public function indexAction()

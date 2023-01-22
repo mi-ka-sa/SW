@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use sw\App;
 
+/** @property Wishlist $model */
 class WishlistController extends AppController
 {
     public function indexAction()

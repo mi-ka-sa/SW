@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use sw\App;
 
+/** @property Page $model */
 class PageController extends AppController
 {
     public function viewAction()

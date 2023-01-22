@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Breadcrumbs;
 use sw\App;
 
+/** @property Product $model */
 class ProductController extends AppController
 {
     public function viewAction()

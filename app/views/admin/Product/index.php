@@ -19,7 +19,7 @@
                         <th>Status</th>
                         <th>Digital product</th>
                         <td width="50"><i class="fas fa-pencil-alt"></i></td>
-                        <td width="50"><i class="far fa-trash-alt"></i></td>
+                        
                     </tr>
                     </thead>
                     <tbody>
@@ -46,12 +46,7 @@
                                    href="<?= ADMIN ?>/product/edit?id=<?= $product['id'] ?>"><i
                                         class="fas fa-pencil-alt"></i></a>
                             </td>
-                            <td width="50">
-                                <a class="btn btn-danger btn-sm delete"
-                                   href="<?= ADMIN ?>/product/delete?id=<?= $product['id'] ?>">
-                                    <i class="far fa-trash-alt"></i>
-                                </a>
-                            </td>
+                            
                         </tr>
                     <?php endforeach; ?>
                     </tbody>

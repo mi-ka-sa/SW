@@ -10,9 +10,9 @@
                 <div class="product-bottom-details d-flex justify-content-between">
                     <div class="product-price">
                         <?php if ($one_prod['old_price']): ?>
-                        <small>$<?= $one_prod['old_price'] ?></small>
+                        <small>£<?= $one_prod['old_price'] ?></small>
                         <?php endif; ?>
-                        $<?= $one_prod['price'] ?></div>
+                        £<?= $one_prod['price'] ?></div>
                     <div class="product-links">
                         <a class="add-to-cart" href="cart/add?id=<?= $one_prod['id'] ?>" data-id="<?= $one_prod['id'] ?>"><?= get_cart_icon($one_prod['id']); ?></a>
                         <?php if (in_array($one_prod['id'], \sw\App::$app->getProperty('wishlist'))): ?>

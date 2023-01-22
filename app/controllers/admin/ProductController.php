@@ -6,6 +6,7 @@ use sw\App;
 use RedBeanPHP\R;
 use sw\Pagination;
 
+/** @property Product $model */
 class ProductController extends AppController
 {
     public function indexAction()

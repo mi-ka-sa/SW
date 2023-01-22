@@ -38,7 +38,7 @@
                             <tr <?php if ($order['status']) echo 'class="table-info"' ?>>
                                 <td><?= $order['id'] ?></td>
                                 <td><?php __("user_order_status_{$order['status']}"); ?></td>
-                                <td>$<?= $order['total'] ?></td>
+                                <td>£<?= $order['total'] ?></td>
                                 <td><?= $order['created_at'] ?></td>
                                 <td><?= $order['updated_at'] ?></td>
                                 <td><a href="user/order?id=<?= $order['id'] ?>"><?php __('user_orders_view'); ?></a></td>
